@@ -14,18 +14,30 @@
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/quick-count">Quick Count</a>
                     </li>
+                    @can('admin')
+                    <li class="nav-item mr-3">
+                        <a class="nav-link text-white" href="/admin">Admin</a>
+                    </li>
+                    @endcan
+                    
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/kandidat">Kandidat</a>
                     </li>
                     <li class="nav-item mr-3 mb-2">
-                        <a href="/login-pemilih" class="btn btn-outline-light rounded-pill">Login sebagai Pemilih</a>
-                        <!-- hanya tampil ketika sudah login, dan button login pemilih hilang 
-                        <button class="btn btn-outline-light rounded-pill">Username - Pemilih</button>  -->
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="/login-admin" class="btn btn-success rounded-pill">Login sebagai Admin</a>
-                         <!-- hanya tampil ketika sudah login, dan button login admin hilang
-                        <a href="" class="btn btn-danger rounded-pill">Logout</a> -->
+
+                        @guest
+                            <a href="/login-pemilih" class="btn btn-outline-light rounded-pill">Login sebagai Pemilih</a>
+                        @endguest
+                        <!-- hanya tampil ketika sudah login, dan button login pemilih hilang -->
+                        @auth
+                            <button class="btn btn-outline-light rounded-pill">{{ auth()->user()->username }}</button>
+
+                            <form action="/logout" method="POST" class="d-inline">
+                                @csrf
+                                <button class="btn btn-danger rounded-pill ">Logout</button> 
+                            </form>
+
+                        @endauth
                     </li>
                 </ul>
             </div>

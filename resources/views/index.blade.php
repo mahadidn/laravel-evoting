@@ -7,7 +7,12 @@
             <p>Selamat datang di Sistem Pemungutan Suara (E-Voting) online berbasis web Anda bisa mengakses dari mana saja
                 dan kapan saja</p>
             <div class="">
-                <a href="/login-pemilih" class="btn btn-info text-white mr-2">Vote Now</a>
+                @can('admin')
+                    <a href="/admin" class="btn btn-info text-white mr-2">Dashboard admin</a>
+                @endcan
+                @cannot('admin')
+                    <a href="/vote" class="btn btn-info text-white mr-2">Vote Now</a>
+                @endcannot
                 <a href="/kandidat" class="btn btn-outline-light"> Candidate List</a>
             </div>
         </div>

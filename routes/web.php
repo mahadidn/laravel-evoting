@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +36,19 @@ Route::get('/quick-count', function(){
 });
 
 // login
-Route::get('/login-admin', [LoginController::class, 'indexAdmin']);
-Route::get('/login-pemilih', [LoginController::class, 'indexVoters']);
+Route::get('/login-pemilih', [LoginController::class, 'indexVoters'])->name('login')->middleware('guest');
+Route::post('/login-pemilih', [LoginController::class, 'authenticate'])->middleware('guest');
+// logout
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // register
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+// vote
+Route::get('/vote', [VoteController::class, 'index'])->middleware('auth');
+
+
+
+// admin role
+Route::get('/admin', [AdminController::class, 'index']);

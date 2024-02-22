@@ -1,8 +1,6 @@
-<?php
-    include ('includes/user/head.php');
-    include ('includes/user/navbar.php');
-?>
+@extends('layouts.main')
 
+@section('container')
     <div class="container-fluid pt-5 gx-5">
         <div class="container">
             <h2 class="text-center">Voting Sekarang!</h2>
@@ -56,8 +54,5 @@
             </div>
         </div>
     </div>
-    </body>
-<?php
-    include ('includes/user/scripts.php');
-?>
-</html>
+    @include('includes.user.scripts')
+@endsection
