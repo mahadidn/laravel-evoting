@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', [
+        "title" => "judul"
+    ]);
 });
+
+Route::get('/kandidat', function(){
+    return view('kandidat', [
+        "title" => "kandidat"
+    ]);
+});
+
+Route::get('/quick-count', function(){
+    return view('quick-count', [
+      "title" => "Quick Count"  
+    ]);
+});
+
+Route::get('/login-admin', [LoginController::class, 'indexAdmin']);
+Route::get('/login-pemilih', [LoginController::class, 'indexVoters']);
+
+Route::get('/register', [RegisterController::class, 'index']);
