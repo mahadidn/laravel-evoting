@@ -51,4 +51,4 @@ Route::get('/vote', [VoteController::class, 'index'])->middleware('auth');
 
 
 // admin role
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');

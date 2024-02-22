@@ -30,7 +30,7 @@
                         @endguest
                         <!-- hanya tampil ketika sudah login, dan button login pemilih hilang -->
                         @auth
-                            <button class="btn btn-outline-light rounded-pill">{{ auth()->user()->username }}</button>
+                            <a href="/vote" class="btn btn-outline-light rounded-pill">{{ auth()->user()->username }}</a>
 
                             <form action="/logout" method="POST" class="d-inline">
                                 @csrf
