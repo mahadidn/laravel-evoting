@@ -33,7 +33,10 @@ Route::get('/quick-count', function(){
     ]);
 });
 
+// login
 Route::get('/login-admin', [LoginController::class, 'indexAdmin']);
 Route::get('/login-pemilih', [LoginController::class, 'indexVoters']);
 
+// register
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
