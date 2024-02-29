@@ -55,6 +55,7 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 
 // data pemilih
 Route::get('/admin/data-pemilih', [AdminController::class, 'dataPemilih'])->middleware('auth');
+Route::post('/admin/data-pemilih/{username}/hapus', [AdminController::class, 'hapusPemilih'])->middleware('auth');
 // data kandidat
 Route::get('/admin/data-kandidat', [AdminController::class, 'dataKandidat'])->middleware('auth');
 // data voting

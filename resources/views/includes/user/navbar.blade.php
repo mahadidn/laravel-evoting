@@ -9,28 +9,36 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav" style="font-weight: 600;">
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white active" href="/">Home</a>
+                        <a class="nav-link text-white {{ Request::is('') ? 'active' : '' }}" href="/">Home</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/quick-count">Quick Count</a>
+                        <a class="nav-link text-white {{ Request::is('/quick-count') ? 'active' : '' }}" href="/quick-count">Quick Count</a>
                     </li>
                     @can('admin')
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/admin">Admin</a>
+                        <a class="nav-link text-white {{ Request::is('/admin') ? 'active' : '' }}" href="/admin">Admin</a>
                     </li>
                     @endcan
                     
                     <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/kandidat">Kandidat</a>
+                        <a class="nav-link text-white {{ Request::is('/kandidat') ? 'active' : '' }}" href="/kandidat">Kandidat</a>
                     </li>
                     <li class="nav-item mr-3 mb-2">
 
                         @guest
-                            <a href="/login-pemilih" class="btn btn-outline-light rounded-pill">Login sebagai Pemilih</a>
+                            <a href="/login-pemilih" class="btn btn-outline-light rounded-pill {{ Request::is('/login-pemilih') ? 'active' : '' }}">Login sebagai Pemilih</a>
                         @endguest
                         <!-- hanya tampil ketika sudah login, dan button login pemilih hilang -->
                         @auth
+                            @can('admin')
+                                <li class="nav-item mr-3">
+                                    <a href="/admin" class="btn btn-outline-light rounded-pill">{{ auth()->user()->username }}</a>
+                                </li>
+                            @endcan
+                            @cannot('admin')
+                                
                             <a href="/vote" class="btn btn-outline-light rounded-pill">{{ auth()->user()->username }}</a>
+                            @endcannot
 
                             <form action="/logout" method="POST" class="d-inline">
                                 @csrf

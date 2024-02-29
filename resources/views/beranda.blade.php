@@ -20,7 +20,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Pengguna</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    10
+                                    {{ $jumlahPengguna }}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -39,7 +39,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Kandidat</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    3
+                                    {{ $jumlahKandidat }}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -58,7 +58,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Pemilih</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    7
+                                    {{ $jumlahPemilih }}
                                 </div>
                             </div>
                             <div class="col-auto">

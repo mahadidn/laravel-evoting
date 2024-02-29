@@ -22,17 +22,33 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($dataPemilih as $pemilih)
+                                
+                                @if ($pemilih->is_admin)
+                                    @continue
+                                @endif
+
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $i }}</td>
+                                <td>{{ $pemilih->name }}</td>
+                                <td>{{ $pemilih->username }}</td>
+                                <td>@if($pemilih->sudah_memilih) Sudah @else Belum @endif</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <a class="btn btn-danger btn-sm" href="">Hapus</a>
+                                        <form action="/admin/data-pemilih/{{ $pemilih->username }}/hapus" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
+                            @php
+                                $i++;
+                            @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

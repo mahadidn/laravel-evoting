@@ -10,49 +10,49 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item active">
+  <li class="nav-item {{ Request::is('admin') ? 'active' : '' }}">
     <a class="nav-link"  href="/admin">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
   
 
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/data-pemilih') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/data-pemilih">
       <i class="fas fa-address-card"></i>
       <span>Data Pemilih</span></a>
   </li>
 
  
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/data-kandidat') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/data-kandidat">
       <i class="fas fa-book"></i>
       <span>Data Kandidat</span></a>
   </li>
 
  
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/data-voting') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/data-voting">
       <i class="fas fa-address-card"></i>
       <span>Data Voting</span></a>
   </li>
 
  
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/rekapitulasi-voting') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/rekapitulasi-voting">
       <i class="fas fa-address-card"></i>
       <span>Rekapitulasi Voting</span></a>
   </li>
 
  
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/data-pengguna') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/data-pengguna">
       <i class="fas fa-address-card"></i>
       <span>Data Pengguna</span></a>
   </li>
 
 
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/ganti-password') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/ganti-password">
       <i class="fas fa-address-card"></i>
       <span>Ganti Password</span></a>
