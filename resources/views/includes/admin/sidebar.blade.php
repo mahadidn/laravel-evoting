@@ -3,7 +3,7 @@
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="beranda.php">
-    <img src="img/icon.ico" alt="icon" class="img-fluid" style="width: 1.7rem">
+    <img src="/img/icon.ico" alt="icon" class="img-fluid" style="width: 1.7rem">
     <div class="sidebar-brand-text mx-3 fs-1 font-weight-bold">E-Voting</div>
   </a>
 
@@ -11,49 +11,49 @@
   <hr class="sidebar-divider my-0">
 
   <li class="nav-item active">
-    <a class="nav-link"  href="beranda.php">
+    <a class="nav-link"  href="/admin">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
   
 
   <li class="nav-item">
-    <a class="nav-link" href="data-pemilih.php">
+    <a class="nav-link" href="/admin/data-pemilih">
       <i class="fas fa-address-card"></i>
       <span>Data Pemilih</span></a>
   </li>
 
  
   <li class="nav-item">
-    <a class="nav-link" href="data-kandidat.php">
+    <a class="nav-link" href="/admin/data-kandidat">
       <i class="fas fa-book"></i>
       <span>Data Kandidat</span></a>
   </li>
 
  
   <li class="nav-item">
-    <a class="nav-link" href="data-voting.php">
+    <a class="nav-link" href="/admin/data-voting">
       <i class="fas fa-address-card"></i>
       <span>Data Voting</span></a>
   </li>
 
  
   <li class="nav-item">
-    <a class="nav-link" href="data-rekapitulasi-voting.php">
+    <a class="nav-link" href="/admin/rekapitulasi-voting">
       <i class="fas fa-address-card"></i>
       <span>Rekapitulasi Voting</span></a>
   </li>
 
  
   <li class="nav-item">
-    <a class="nav-link" href="data-pengguna.php">
+    <a class="nav-link" href="/admin/data-pengguna">
       <i class="fas fa-address-card"></i>
       <span>Data Pengguna</span></a>
   </li>
 
 
   <li class="nav-item">
-    <a class="nav-link" href="ganti-password.php">
+    <a class="nav-link" href="/admin/ganti-password">
       <i class="fas fa-address-card"></i>
       <span>Ganti Password</span></a>
   </li>
@@ -99,7 +99,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, Admin</span>
-                <img class="img-profile rounded-circle" src="img/kandidat.jpg">
+                <img class="img-profile rounded-circle" src="/img/kandidat.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -127,14 +127,17 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+          <form action="/logout" method="POST">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </form>
         </div>
         <div class="modal-body">Klik Keluar untuk mengakhiri sesi ini</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <form action="index.php" method="GET">
+          <form action="/logout" method="POST">
+            @csrf
             <button type="submit" name="logout_btn" class="btn btn-base">Keluar</button>
           </form>
         </div>

@@ -1,7 +1,6 @@
-<?php
-    include ('includes/admin/header.php');
-    include ('includes/admin/sidebar.php');
-?>
+
+@include('includes.admin.header')
+@include('includes.admin.sidebar')
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <div class="card shadow mb-4">
@@ -44,7 +43,5 @@
         </div>
     </div>
     </div>
-<?php
-    include ('includes/admin/footer.php');
-    include ('includes/admin/scripts.php');
-?>
+@include('includes.admin.footer')
+@include('includes.admin.scripts')

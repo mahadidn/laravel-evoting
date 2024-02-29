@@ -52,3 +52,16 @@ Route::get('/vote', [VoteController::class, 'index'])->middleware('auth');
 
 // admin role
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+
+// data pemilih
+Route::get('/admin/data-pemilih', [AdminController::class, 'dataPemilih'])->middleware('auth');
+// data kandidat
+Route::get('/admin/data-kandidat', [AdminController::class, 'dataKandidat'])->middleware('auth');
+// data voting
+Route::get('/admin/data-voting', [AdminController::class, 'dataVoting'])->middleware('auth');
+// rekapitulasi voting
+Route::get('/admin/rekapitulasi-voting', [AdminController::class, 'rekapitulasiVoting'])->middleware('auth');
+// data pengguna
+Route::get('/admin/data-pengguna', [AdminController::class, 'dataPengguna'])->middleware('auth');
+// ganti password
+Route::get('/admin/ganti-password', [AdminController::class, 'gantiPassword'])->middleware('auth');
