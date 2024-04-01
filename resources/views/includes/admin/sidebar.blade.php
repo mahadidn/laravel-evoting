@@ -24,7 +24,7 @@
   </li>
 
  
-  <li class="nav-item {{ Request::is('admin/data-kandidat') ? 'active' : '' }}">
+  <li class="nav-item {{ Request::is('admin/data-kandidat*') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/data-kandidat">
       <i class="fas fa-book"></i>
       <span>Data Kandidat</span></a>
@@ -98,7 +98,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Halo, {{ auth()->user()->username }}</span>
                 <img class="img-profile rounded-circle" src="/img/kandidat.jpg">
               </a>
               <!-- Dropdown - User Information -->

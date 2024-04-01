@@ -32,7 +32,10 @@ class AdminController extends Controller
     public function hapusPemilih(Request $request){
 
         $this->authorize('admin');
-        return "Berhasil menghapus $request->username";
+        $user = User::query()->where('username', $request->username);
+        $user->delete();
+
+        return back()->with('successDelete', 'Berhasil menghapus ' . $request->username);
 
     }
 
@@ -41,10 +44,50 @@ class AdminController extends Controller
         $this->authorize('admin');
         return view('data-kandidat', [
             "title" => "Data Kandidat",
+            "kandidats" => Kandidat::all(),
         ]);
 
     }
 
+
+    
+    public function tambahKandidat(){
+        return view('form-kandidat', [
+            "title" => "Form Tambah Kandidat"
+        ]);      
+    }
+
+
+    public function postTambahKandidat(Request $request){
+
+        $this->authorize('admin');
+        
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'image' => 'image|file|max:5000',
+            'profil' => 'required',
+            'visiMisi' => 'required',
+        ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+
+        $kandidat = new Kandidat();
+        $kandidat->nama_lengkap = $request->nama;
+        $kandidat->image = $validatedData['image'];
+        $kandidat->visi = $request->profil;
+        $kandidat->misi = $request->visiMisi;
+        $kandidat->save();
+        
+
+        return redirect('/admin/data-kandidat')->with('success', 'Data kandidat sudah ditambahkan');     
+
+        
+
+    }
+    
     public function dataVoting(){
 
         $this->authorize('admin');

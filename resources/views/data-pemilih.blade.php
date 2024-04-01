@@ -8,6 +8,13 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-base" style="font-weight: 600">Data Pemilih</h1>
                 <p class="mb-4">Berikut merupakan data pemilih telah terdaftar pada sistem.</p>
+
+                @if (session()->has('successDelete'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('successDelete') }}
+                    </div>
+                @endif
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">

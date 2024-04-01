@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Kandidat extends Model
 {
     use HasFactory;
+
+    protected $table = "kandidats";
+    protected $primaryKey = "id";
+
+    protected $fillable = [
+        "nama_lengkap",
+        "image",
+        "visi",
+        "misi"
+    ];
+
 }

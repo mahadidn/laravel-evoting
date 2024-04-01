@@ -7,8 +7,14 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-base" style="font-weight: 600">Data Kandidat</h1>
                 <p class="mb-4">Berikut merupakan data kandidat telah terdaftar pada sistem.</p>
-                <a type="button" class="btn btn-base" href="form-kandidat.php">Tambah Data</a>
+                <a type="button" class="btn btn-base" href="/admin/data-kandidat/tambah">Tambah Data</a>
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
+            
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
@@ -23,19 +29,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="d-flex justify-content-center">
-                                        <a class="btn btn-success btn-sm mr-2" href="form-kandidat.php">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($kandidats as  $kandidat)
+                                
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kandidat->nama_lengkap }}</td>
+                                    <td><img src="{{ asset('storage/' . $kandidat->image) }}" width="200px" alt=""></td>
+                                    <td>{{ $kandidat->visi }}</td>
+                                    <td>{{ $kandidat->misi }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <a class="btn btn-success btn-sm mr-2" href="form-kandidat.php">Edit</a>
+                                            <a class="btn btn-danger btn-sm" href="">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -45,4 +54,4 @@
     </div>
 
 @include('includes.admin.footer')
-@include('includes.admin.scripts');
+@include('includes.admin.scripts')
